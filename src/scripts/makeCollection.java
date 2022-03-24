@@ -39,7 +39,6 @@ public class makeCollection {
 			doc.appendChild(docs);
 			
 			for(File file : files) {
-				System.out.println(file);
 				org.jsoup.nodes.Document html = Jsoup.parse(file, "UTF-8");
 				String titleData = html.title();
 				String bodyData = html.body().text();

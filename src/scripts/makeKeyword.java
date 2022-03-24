@@ -2,6 +2,7 @@ package openSW;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -31,12 +32,11 @@ public class makeKeyword {
 		this.input_file = file;
 	}
 	
-	public void convertXml() {
-		File dir = new File(input_file);
-		File files[] = dir.listFiles();
+	public void convertXml() throws FileNotFoundException {
 		int count = 0;
-		int num=0;
-		
+		int num = 0;
+		File origin = new File(input_file);
+		FileInputStream file = new FileInputStream(origin);
 		try {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docbuilder = docFactory.newDocumentBuilder();
@@ -44,41 +44,32 @@ public class makeKeyword {
 			doc.setXmlStandalone(true);
 			org.w3c.dom.Element docs = doc.createElement("docs");
 			doc.appendChild(docs);
+			org.jsoup.nodes.Document document = Jsoup.parse(file, null, "", Parser.xmlParser());
 			
-			for(File origin : files) {
-				if(origin.getName().contains("xml")) {
-					FileInputStream file = new FileInputStream(origin);
-					
-					org.jsoup.nodes.Document document = Jsoup.parse(file, null, "", Parser.xmlParser());
-					
-					for (Element e : document.select("title")) {
-						org.w3c.dom.Element id = doc.createElement("doc");
-						docs.appendChild(id);
-						
-						id.setAttribute("id", Integer.toString(count));
-						
-						org.w3c.dom.Element title = doc.createElement("title");
-						title.appendChild(doc.createTextNode(e.text()));
-						id.appendChild(title);
-						
-						org.w3c.dom.Element body = doc.createElement("body");
-						Element e1 = document.select("body").get(num);
-						KeywordExtractor ke = new KeywordExtractor();
-						KeywordList kl = ke.extractKeyword(e1.text(), true);
-						String str = "";
-						for (int i = 0; i < kl.size(); i++) {
-							Keyword kwrd = kl.get(i);
-							str += kwrd.getString() + ":" + kwrd.getCnt() + "#";
-						}
-						body.appendChild(doc.createTextNode(str));
-						id.appendChild(body);
-						count++;
-						num++;
-					}
+			for (Element e : document.select("title")) {
+				org.w3c.dom.Element id = doc.createElement("doc");
+				docs.appendChild(id);
+				
+				id.setAttribute("id", Integer.toString(count));
+				
+				org.w3c.dom.Element title = doc.createElement("title");
+				title.appendChild(doc.createTextNode(e.text()));
+				id.appendChild(title);
+				
+				org.w3c.dom.Element body = doc.createElement("body");
+				Element e1 = document.select("body").get(num);
+				KeywordExtractor ke = new KeywordExtractor();
+				KeywordList kl = ke.extractKeyword(e1.text(), true);
+				String str = "";
+				for (int i = 0; i < kl.size(); i++) {
+					Keyword kwrd = kl.get(i);
+					str += kwrd.getString() + ":" + kwrd.getCnt() + "#";
 				}
-				num=0;
+				body.appendChild(doc.createTextNode(str));
+				id.appendChild(body);
+				count++;
+				num++;
 			}
-			
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			
 			Transformer transformer = transformerFactory.newTransformer();
