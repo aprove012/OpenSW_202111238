@@ -6,15 +6,15 @@
 ### WINDOWS
 `javac -cp (외부 jar 파일 이름 1):(외부 jar 파일 이름 2):,,,, src/scripts/*.java -d bin (-encoding UTF8)`
 
-ex) `javac -cp jars/jsoup-1.13.1.jar:jars/kkma-2.1.jar src/scripts/*.java -d bin -encoding UTF8`
+ex) `javac -cp jars/jsoup-1.14.3.jar:jars/kkma-2.1.jar src/scripts/*.java -d bin -encoding UTF8`
 
 `javac -cp "(외부 jar 파일 이름 1);(외부 jar 파일 이름 2);,,,," src/scripts/*.java -d bin (-encoding UTF8)`
 
-ex) `javac -cp "jars/jsoup-1.13.1.jar;jars/kkma-2.1.jar" src/scripts/*.java -d bin -encoding UTF8`
+ex) `javac -cp "jars/jsoup-1.14.3.jar;jars/kkma-2.1.jar" src/scripts/*.java -d bin -encoding UTF8`
 
 ## 실행 명령어
 ### WINDOWS
 
 `java -cp (외부 jar 파일 이름 1);(외부 jar 파일 이름 2);,,,,;bin scripts.kuir (args 1) (args 2) ,,, (args n)`
 
-ex) `java -cp ./jars/jsoup-1.13.1.jar;./jars/kkma-2.1.jar;bin scripts.kuir -c data`
+ex) `java -cp ./jars/jsoup-1.14.3.jar;./jars/kkma-2.1.jar;bin scripts.kuir -c ./data/`
