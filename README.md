@@ -14,7 +14,7 @@ ex) `javac -cp "jars/jsoup-1.14.3.jar;jars/kkma-2.1.jar" src/scripts/*.java -d b
 
 ## 실행 명령어
 ### WINDOWS
-#### 마지막 경로는 ./data/
+#### html ./data/
 `java -cp (외부 jar 파일 이름 1);(외부 jar 파일 이름 2);,,,,;bin scripts.kuir (args 1) (args 2) ,,, (args n)`
 
 1. `java -cp ./jars/jsoup-1.14.3.jar;./jars/kkma-2.1.jar;bin scripts.kuir -c ./data/`
