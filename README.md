@@ -17,4 +17,6 @@ ex) `javac -cp "jars/jsoup-1.14.3.jar;jars/kkma-2.1.jar" src/scripts/*.java -d b
 #### 마지막 경로는 ./data/
 `java -cp (외부 jar 파일 이름 1);(외부 jar 파일 이름 2);,,,,;bin scripts.kuir (args 1) (args 2) ,,, (args n)`
 
-ex) `java -cp ./jars/jsoup-1.14.3.jar;./jars/kkma-2.1.jar;bin scripts.kuir -c ./data/`
+1. `java -cp ./jars/jsoup-1.14.3.jar;./jars/kkma-2.1.jar;bin scripts.kuir -c ./data/`
+2. `java -cp ./jars/jsoup-1.14.3.jar;./jars/kkma-2.1.jar;bin scripts.kuir -k ./collection.xml'
+3. `java -cp ./jars/jsoup-1.14.3.jar;./jars/kkma-2.1.jar;bin scripts.kuir -i ./index.xml`
