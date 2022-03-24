@@ -76,10 +76,10 @@ public class indexer {
 					String findArr[] = find.split("#|:");
 					List<String> list = new ArrayList<>(Arrays.asList(findArr));
 					if(list.indexOf(arr[i]) != -1) {
-						value += j + " " + String.format("%.1f", Integer.parseInt(arr[i+1])*Math.log(docNum/count)) + " ";
+						value += j + "\t" + String.format("%.1f", Integer.parseInt(arr[i+1])*Math.log(docNum/count)) + "t";
 					}
 					else {
-						value += j + " " + 0.0 + " ";
+						value += j + "\t" + 0.0 + "\t";
 					}
 				}
 				xmlMap.put(arr[i], value);
