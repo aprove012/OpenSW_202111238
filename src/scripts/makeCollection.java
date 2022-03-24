@@ -1,4 +1,4 @@
-package openSW;
+package scripts;
 
 import java.io.File;
 import java.io.FileOutputStream;

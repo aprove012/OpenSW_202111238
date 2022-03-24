@@ -1,4 +1,4 @@
-package openSW;
+package scripts;
 
 import java.io.IOException;
 
